@@ -7,12 +7,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Chef Project</title>
-<link rel="stylesheet" type="text/css" href="board/main.css">
+<link rel="stylesheet" type="text/css" href="board/list.css">
 </head>
 <body>
 	<center>
 		<div id="div" align="center">
-			
 			<h1><img alt="chef" src="board/image/chef.png">요리하는 개발자의 요리 게시판</h1>
 		</div>
 		<ul id="topMenu">
@@ -28,14 +27,14 @@
 		</ul>
 		<br/>
 		<br/>
-		<table border="0" width="800">
+		<table border="0" width="1000">
 			<tr>
 				<td>
 					<a href="insert.jsp"><img alt="write" src="board/image/write.png" width="40" height="auto"></a>
 				</td>
 			</tr>
 		</table>
-		<table border="0" width="800" id="table_content">
+		<table border="0" width="1000" id="table_content">
 			<tr>
 				<th width="10%">번호</th>
 				<th width="50%">제목</th>
@@ -69,24 +68,24 @@
 			</tr>
 			</c:forEach>
 		</table>
-		<table border="0" width="800" id="icon">
+		<table border="0" width="1000" id="icon">
 			<tr>
 				<td align="right">
-					<img alt="begin" src="board/image/begin.png" width="20" height="auto" style="vertical-align:top;">
-					<img alt="prev" src="board/image/prev.png" width="20" height="auto" style="vertical-align:top;">
+					<a href="#"><img alt="begin" src="board/image/begin.png" width="20" height="auto" style="vertical-align:top;"></a>
+					<a href="#"><img alt="prev" src="board/image/prev.png" width="20" height="auto" style="vertical-align:top;"></a>
 					<c:forEach var="i" begin="${fromPage }" end="${toPage }">
-					[
-					<c:if test="${curPage==i }">
-						<span style="color: red;">${i }</span>
-					</c:if>
-					<c:if test="${curPage!=i }">
-						<a href="list.do?page=${i }">${i }</a>
-					</c:if>
-					]
-				</c:forEach>
-					<img alt="next" src="board/image/next.png" width="20" height="auto" style="vertical-align:top;">
-					<img alt="end" src="board/image/end.png" width="20" height="auto" style="vertical-align:top;">
-					${curPage } page / ${totalPage } pages
+						[
+						<c:if test="${curPage==i }">
+							<span style="color: red;">${i }</span>
+						</c:if>
+						<c:if test="${curPage!=i }">
+							<a href="list.do?page=${i }">${i }</a>
+						</c:if>
+						]
+					</c:forEach>
+					<a href="#"><img alt="next" src="board/image/next.png" width="20" height="auto" style="vertical-align:top;"></a>
+					<a href="#"><img alt="end" src="board/image/end.png" width="20" height="auto" style="vertical-align:top;"></a>
+					&nbsp;${curPage } page / ${totalPage } pages
 				</td>
 			</tr>
 		</table>
