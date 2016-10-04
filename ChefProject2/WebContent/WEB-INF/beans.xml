@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans>
 	<bean id="list" class="com.model.ListModel"/>
-	<bean id="content" class="com.model.ContentModel"></bean>
+	<bean id="content" class="com.model.ContentModel"/>
+	<bean id="insert_ok" class="com.model.InsertOkModel"/>
+	<bean id="insert" class="com.model.InsertModel"/>
+	<bean id="reply" class="com.model.ReplyModel"/>
+	<bean id="reply_ok" class="com.model.ReplyOkModel"/>
 </beans>
