@@ -14,16 +14,16 @@
 		<div id="div" align="center">
 			<h1><img alt="chef" src="board/image/chef.png">요리하는 개발자의 요리 게시판</h1>
 		</div>
-		<ul id="topMenu">
-			<li><a class="menuLink" href="#">한식</a></li>
-			<li style="color: #fff;">|</li>
-			<li><a class="menuLink" href="#">일식</a></li>
-			<li style="color: #fff;">|</li>
-			<li><a class="menuLink" href="#">중식</a></li>
-			<li style="color: #fff;">|</li>
-			<li><a class="menuLink" href="#">양식</a></li>
-			<li style="color: #fff;">|</li>
-			<li><a class="menuLink" href="#">기타</a></li>
+		<ul>
+			<li><a class="dropdown" href="#">카테고리</a>
+				<ul>
+					<li>한식</li>
+					<li>일식</li>
+					<li>중식</li>
+					<li>양식</li>
+					<li>기타</li>
+				</ul>
+			</li>
 		</ul>
 		<br/>
 		<br/>
@@ -36,7 +36,8 @@
 		</table>
 		<table border="0" width="1000" id="table_content">
 			<tr>
-				<th width="10%">번호</th>
+				<th width="5%">번호</th>
+				<th width="5%">분류</th>
 				<th width="50%">제목</th>
 				<th width="15%">작성자</th>
 				<th width="15%">작성일</th>
@@ -44,7 +45,8 @@
 			</tr>
 			<c:forEach var="dto" items="${list }">
 			<tr class="dataTr">
-				<td width="10%" align="center">${dto.no }</td>
+				<td width="5%" align="center">${dto.no }</td>
+				<td width="5%" align="center">${dto.kind }</td>
 				<td width="50%" align="left">
 					<c:if test="${dto.group_tab>0 }">
 						<c:forEach var="i" begin="1" end="${dto.group_tab }">
@@ -70,9 +72,9 @@
 		</table>
 		<table border="0" width="1000" id="icon">
 			<tr>
-				<td align="right">
-					<a href="#"><img alt="begin" src="board/image/begin.png" width="20" height="auto" style="vertical-align:top;"></a>
-					<a href="#"><img alt="prev" src="board/image/prev.png" width="20" height="auto" style="vertical-align:top;"></a>
+				<td align="center">
+					<a href="#" class="button">처음으로</a>
+					<a href="#" class="button">이전</a>
 					<c:forEach var="i" begin="${fromPage }" end="${toPage }">
 						[
 						<c:if test="${curPage==i }">
@@ -83,9 +85,9 @@
 						</c:if>
 						]
 					</c:forEach>
-					<a href="#"><img alt="next" src="board/image/next.png" width="20" height="auto" style="vertical-align:top;"></a>
-					<a href="#"><img alt="end" src="board/image/end.png" width="20" height="auto" style="vertical-align:top;"></a>
-					&nbsp;${curPage } page / ${totalPage } pages
+					<a href="#" class="button">다음</a>
+					<a href="#" class="button">마지막으로</a>
+					
 				</td>
 			</tr>
 		</table>
