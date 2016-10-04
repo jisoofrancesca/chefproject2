@@ -6,7 +6,8 @@
     <servlet-class>com.controller.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>C:\Users\SIST\git\ChefProject2\ChefProject2\WebContent\WEB-INF\beans.xml</param-value>
+      <!-- <param-value>C:\Users\SIST\git\ChefProject2\ChefProject2\WebContent\WEB-INF\beans.xml</param-value> -->
+      <param-value>C:\Users\sist\git\chefproject2\ChefProject2\WebContent\WEB-INF\beans.xml</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>

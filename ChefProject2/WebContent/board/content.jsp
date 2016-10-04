@@ -41,14 +41,11 @@
 		</table>
 		<table width="600" border="0">
 			<tr>
-				<td align="right"><a href="#"><img alt="reply"
-						src="board/image/reply.png" width="20" height="auto"></a> <a
-					href="#"><img alt="modify" src="board/image/modify.png"
-						width="20" height="auto"></a> <a href="#"><img alt="delete"
-						src="board/image/delete.png" width="20" height="auto"></a> <a
-					href="list.do?page=${page}"><img alt="list"
-						src="board/image/list.png" width="20" height="auto"></a></td>
-			</tr>
+				<td align="right"><a href="#"><img alt="reply" src="board/image/reply.png" width="20" height="auto"></a> 
+					<a href="#"><img alt="modify" src="board/image/modify.png"	width="20" height="auto"></a> 
+					<a href="#"><img alt="delete" src="board/image/delete.png" width="20" height="auto"></a>
+					<a href="list.do?page=${page}"><img alt="list" src="board/image/list.png" width="20" height="auto"></a>
+				</td>
 		</table>
 	</center>
 </body>

@@ -104,7 +104,141 @@ public class BoardDAO {
 	      }
 	      return d;
 	   }
+	   
+	   public void boardInsert(BoardDTO d){
+			try{
+				getConnection();
+				String sql="INSERT INTO board(no,name,subject,content,pwd,group_id) "
+						+ "VALUES((SELECT NVL(MAX(no)+1,1) FROM board),?,?,?,?,"
+						+ "(SELECT NVL(MAX(group_id)+1,1) FROM board))";
+				ps=conn.prepareStatement(sql);
+				ps.setString(1, d.getName());
+				ps.setString(2, d.getSubject());
+				ps.setString(3, d.getContent());
+				ps.setString(4, d.getPwd());
+				ps.executeUpdate();			
+			}catch(Exception ex){
+				System.out.println(ex.getMessage());
+			}finally{
+				disConnection();
+			}
+		}
 	
+	   public void boardReply(int root,BoardDTO dto){
+			try{
+				getConnection();
+				// 답글을 달려는 글의 정보불러오기
+				String sql="SELECT group_id,group_step,group_tab FROM board WHERE no=?";
+				ps=conn.prepareStatement(sql);
+				ps.setInt(1, root);			
+				ResultSet rs=ps.executeQuery();
+				rs.next();
+				int gi=rs.getInt(1);
+				int gs=rs.getInt(2);
+				int gt=rs.getInt(3);
+				rs.close();
+				ps.close();
+				
+				sql="UPDATE board SET group_step=group_step+1 WHERE group_id=? AND group_step>?";
+				ps=conn.prepareStatement(sql);
+				ps.setInt(1, gi);
+				ps.setInt(2, gs);
+				ps.executeQuery();
+				ps.close();
+				
+				sql="UPDATE board SET depth=depth+1 WHERE no=?";
+				ps=conn.prepareStatement(sql);
+				ps.setInt(1, root);
+				ps.executeUpdate();
+				ps.close();
+				
+				sql="INSERT INTO board(no,name,subject,content,pwd,group_id,group_step,group_tab,root)"
+						+ " VALUES ((SELECT NVL(MAX(no)+1,1) FROM board),?,?,?,?,?,?,?,?)";
+				ps=conn.prepareStatement(sql);
+				ps.setString(1, dto.getName());
+				ps.setString(2, dto.getSubject());
+				ps.setString(3, dto.getContent());
+				ps.setString(4, dto.getPwd());
+				ps.setInt(5, gi);
+				ps.setInt(6, gs+1);
+				ps.setInt(7, gt+1);
+				ps.setInt(8, root);
+				
+				ps.executeUpdate();
+				
+			}catch(Exception ex){
+				System.out.println(ex.getMessage());
+			}finally{
+				disConnection();
+			}
+		}
+	
+	 //글 삭제하기
+		public boolean boardDelete(int no,String pwd){
+			boolean bCheck=false;		
+			try{			
+				getConnection();
+				// 패스워드 가져오기
+				String sql="SELECT pwd FROM board WHERE no=?";
+				ps=conn.prepareStatement(sql);
+				ps.setInt(1, no);
+				ResultSet rs=ps.executeQuery();
+				rs.next();
+				String db_pwd=rs.getString(1);
+				rs.close();
+				ps.close();
+				
+				// 패스워드 확인
+				if(db_pwd.equals(pwd)){
+					bCheck=true;
+					// 루트 ???와 답글이 있는지 확인
+					sql="SELECT root,depth FROM board WHERE no=?";
+					ps=conn.prepareStatement(sql);
+					ps.setInt(1, no);
+					rs=ps.executeQuery();
+					rs.next();
+					int root=rs.getInt(1);
+					int depth=rs.getInt(2);
+					rs.close();
+					ps.close();
+
+					//답글이없는경우 삭제
+					if(depth==0){
+						sql="DELETE FROM board WHERE no=?";
+						ps=conn.prepareStatement(sql);
+						ps.setInt(1, no);
+						ps.executeUpdate();
+						ps.close();
+					}else{
+						//Update
+						sql="UPDATE board SET subject=?,content=? WHERE no=?";
+						String msg="삭제된 게시물입니다";
+						ps=conn.prepareStatement(sql);
+						ps.setString(1, msg);
+						ps.setString(2, msg);
+						ps.setInt(3, no);
+						ps.executeUpdate();
+						ps.close();
+						
+					}
+					//depth -1
+					sql="UPDATE board SET depth=depth-1 WHERE no=?";
+					ps=conn.prepareStatement(sql);
+					ps.setInt(1, root);
+					ps.executeUpdate();
+					
+					
+				}else{
+					bCheck=false;
+				}
+				
+			}catch(Exception ex){
+				System.out.println(ex.getMessage());
+			}finally{
+				disConnection();
+			}
+			return bCheck;
+		}
 	
 	public int boardTotal(){
 		int total=0;
