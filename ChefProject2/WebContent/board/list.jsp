@@ -14,8 +14,9 @@
 		<div id="div" align="center">
 			<h1><img alt="chef" src="board/image/chef.png">요리하는 개발자의 요리 게시판</h1>
 		</div>
-		<ul id="topMenu">
-			<li><a class="menuLink" href="#">카테고리</a>
+
+		<ul>
+			<li><a class="dropdown" href="#">카테고리</a>
 				<ul>
 					<li>한식</li>
 					<li>일식</li>
