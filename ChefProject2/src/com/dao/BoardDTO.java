@@ -8,6 +8,7 @@ public class BoardDTO {
 	private String subject;
 	private String content;
 	private Date regdate;
+	private String pwd;
 	private int hit;
 	private int group_id;
 	private int group_step;
@@ -17,6 +18,12 @@ public class BoardDTO {
 	private String kind;
 	private String dbday;
 	
+	public String getPwd() {
+		return pwd;
+	}
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
 	public String getDbday() {
 		return dbday;
 	}
