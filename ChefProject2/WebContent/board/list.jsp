@@ -12,20 +12,23 @@
 <body>
 	<center>
 		<div id="div" align="center">
-			<h1><img alt="chef" src="board/image/chef.png">요리하는 개발자의 요리 게시판</h1>
+			<h1><img alt="chef" src="board/image/chef.png" height="30px">&nbsp;The Recipe Board</h1>
 		</div>
-		<ul>
-			<li><a class="dropdown" href="#">카테고리</a>
-				<ul>
-					<li>한식</li>
-					<li>일식</li>
-					<li>중식</li>
-					<li>양식</li>
-					<li>기타</li>
-				</ul>
-			</li>
-		</ul>
-		<br/>
+		<div>
+			<ul>
+				<li><a href="#">전체보기</a></li>
+				<li class="dropdown">
+					<a href="#" class="dtopbtn">카테고리</a>
+					<div class="dropdown-content">
+						<a href="#">한식</a>
+						<a href="#">중식</a>
+						<a href="#">일식</a>
+						<a href="#">양식</a>
+						<a href="#">기타</a>
+					</div>
+				</li>
+			</ul>
+		</div>
 		<br/>
 		<table border="0" width="1000">
 			<tr>
@@ -36,8 +39,7 @@
 		</table>
 		<table border="0" width="1000" id="table_content">
 			<tr>
-				<th width="5%">번호</th>
-				<th width="5%">분류</th>
+				<th width="10%">번호</th>
 				<th width="50%">제목</th>
 				<th width="15%">작성자</th>
 				<th width="15%">작성일</th>
@@ -45,8 +47,7 @@
 			</tr>
 			<c:forEach var="dto" items="${list }">
 			<tr class="dataTr">
-				<td width="5%" align="center">${dto.no }</td>
-				<td width="5%" align="center">${dto.kind }</td>
+				<td width="10%" align="center">${dto.no }</td>
 				<td width="50%" align="left">
 					<c:if test="${dto.group_tab>0 }">
 						<c:forEach var="i" begin="1" end="${dto.group_tab }">
@@ -56,7 +57,7 @@
 					<c:if test="${msg == dto.subject }">
 						<font color="red">${dto.subject }</font>
 					</c:if>
-					<c:if test="${msg != dto.subject }">
+					<c:if test="${msg != dto.subject }">${dto.kind}
 						<a href="content.do?no=${dto.no }&page=${curPage}">&nbsp;${dto.subject }</a>
 					
 					</c:if>
@@ -73,8 +74,8 @@
 		<table border="0" width="1000" id="icon">
 			<tr>
 				<td align="center">
-					<a href="#" class="button">처음으로</a>
-					<a href="#" class="button">이전</a>
+					<a href="#" class="button">First</a>
+					<a href="#" class="button">Prev</a>
 					<c:forEach var="i" begin="${fromPage }" end="${toPage }">
 						[
 						<c:if test="${curPage==i }">
@@ -85,8 +86,8 @@
 						</c:if>
 						]
 					</c:forEach>
-					<a href="#" class="button">다음</a>
-					<a href="#" class="button">마지막으로</a>
+					<a href="#" class="button">Next</a>
+					<a href="#" class="button">Last</a>
 					
 				</td>
 			</tr>
