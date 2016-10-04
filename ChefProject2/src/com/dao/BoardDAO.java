@@ -104,6 +104,25 @@ public class BoardDAO {
 	      }
 	      return d;
 	   }
+	   
+	   public void boardInsert(BoardDTO d){
+			try{
+				getConnection();
+				String sql="INSERT INTO board(no,name,subject,content,pwd,group_id) "
+						+ "VALUES((SELECT NVL(MAX(no)+1,1) FROM board),?,?,?,?,"
+						+ "(SELECT NVL(MAX(group_id)+1,1) FROM board))";
+				ps=conn.prepareStatement(sql);
+				ps.setString(1, d.getName());
+				ps.setString(2, d.getSubject());
+				ps.setString(3, d.getContent());
+				ps.setString(4, d.getPwd());
+				ps.executeUpdate();			
+			}catch(Exception ex){
+				System.out.println(ex.getMessage());
+			}finally{
+				disConnection();
+			}
+		}
 	
 	   public void boardReply(int root,BoardDTO dto){
 			try{
