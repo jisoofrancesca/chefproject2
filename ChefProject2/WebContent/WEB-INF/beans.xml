@@ -6,4 +6,6 @@
 	<bean id="insert" class="com.model.InsertModel"/>
 	<bean id="reply" class="com.model.ReplyModel"/>
 	<bean id="reply_ok" class="com.model.ReplyOkModel"/>
+	<bean id="delete" class="com.model.DeleteModel"/>
+	<bean id="delete_ok" class="com.model.DeleteOkModel"/>
 </beans>
