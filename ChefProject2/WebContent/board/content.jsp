@@ -10,42 +10,40 @@
 <body>
 	<center>
 		<div id="div" align="center">
-			<h1>
-				<img alt="chef" src="board/image/chef.png">요리하는 개발자의 요리 게시판
-			</h1>
-			<h2 align="center">내용보기</h2>
+			<h1>내용보기</h1>
 		</div>
-
 		<br />
 		<table border="0" width="600" id="table_content">
 			<tr>
-				<th width="20%">번호</th>
-				<td width="30%">${dto.no }</td>
-				<th width="20%">작성일</th>
-				<td width="30%">${dto.regdate }</td>
+				<th width="20%" class="thcenter">번호</th>
+				<td width="30%" class="tdleft">&nbsp;${dto.no }</td>
+				<th width="20%" class="thcenter">작성일</th>
+				<td width="30%" class="tdleft">&nbsp;${dto.regdate }</td>
 			</tr>
 			<tr>
-				<th width="20%">작성자</th>
-				<td width="30%">${dto.name }</td>
-				<th width="20%">조회수</th>
-				<td width="30%">${dto.hit }</td>
+				<th width="20%" class="thcenter">작성자</th>
+				<td width="30%" class="tdleft">&nbsp;${dto.name }</td>
+				<th width="20%" class="thcenter">조회수</th>
+				<td width="30%" class="tdleft">&nbsp;${dto.hit }</td>
 			</tr>
 			<tr>
-				<th width="20%">제목</th>
-				<td width="30%" colspan="3">${dto.subject }</td>
+				<th width="20%" class="thcenter" class="thcenter">제목</th>
+				<td width="30%" colspan="3" class="tdleft">&nbsp;${dto.subject }</td>
 			</tr>
 			<tr>
-				<td colspan="4" align="left" valign="top" height="200"
-					class="tdleft">${dto.content }</td>
+				<td colspan="4" align="left" valign="top" height="200" class="tdcontent">${dto.content }</td>
 			</tr>
 		</table>
 		<table width="600" border="0">
+			
 			<tr>
-				<td align="right"><a href="#"><img alt="reply" src="board/image/reply.png" width="20" height="auto"></a> 
-					<a href="board/image/btn_modify.gif"><img alt="modify" src="board/image/modify.png"	width="20" height="auto"></a> 
-					<a href="delete.do?no=${dto.no }&page=${page}"><img alt="delete" src="board/image/delete.png" width="20" height="auto"></a>
-					<a href="list.do?page=${page}"><img alt="list" src="board/image/list.png" width="20" height="auto"></a>
+				<td align="right" colspan="4">
+					<a href="#"><input type="button" value="답글" class="button_content"/></a> 
+					<a href="#"><input type="button" value="수정" class="button_content"/></a> 
+					<a href="delete.do?no=${dto.no }&page=${page}"><input type="button" value="삭제" class="button_content"/></a>
+					<a href="list.do?page=${page}"><input type="button" value="목록" class="button_content"/></a>
 				</td>
+			</tr>
 		</table>
 	</center>
 </body>

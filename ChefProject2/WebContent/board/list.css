@@ -1,17 +1,35 @@
 @CHARSET "EUC-KR";
 
-body, html, div, h1 {
+body, html, div {
 	font-size: 14px;
 	margin: 0px;
 	padding: 0px;
+	background-color: #ECEFF1;
+}
+
+.inner {
+	margin: 10px;
+	background-color: #EAEAEA;
+	background-size: cover;
+	width: 1200px;
+	height: 1060px;
+	box-shadow: 5px 0px 5px 5px #AAAAAA;
+	border-radius: 5.5em;
+}
+
+.inner-title {
+	border-top-left-radius: 5.5em;
+	border-top-right-radius: 5.5em;
 }
 
 #div {
-	background-color: #80D8FF;
+	background-color: #CFD8DC;
 	background-size: cover;
 	height: 100px;
+	border-bottom: solid;
+	border-bottom-width: 30px;
+	border-color: #37474F;
 }
-
 
 
 h1 {
@@ -21,52 +39,6 @@ h1 {
 	position: relative;
 	top: 30px;
 }
-
-ul {
-	list-style-type: none;
-	margin: 0px;
-	padding: 0px;
-	overflow: hidden;
-	background-color: #03A9F4;
-}
-
-li {
-	float: left;
-}
-
-li a, .dropbtn {
-	display: inline-block;
-	color: white;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-}
-
-li a:hover, .dropdown:hover .dropbtn {
-	background-color: #01579B;
-}
-
-.dropdown-content {
-	display: none;
-	position: absolute;
-	background-color: #0288D1;
-	min-width: 160px;
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-
-.dropdown-content a {
-	color: black;
-	padding: 12px 16px;
-	text-decoration: none;
-	display: block;
-	text-align: left;
-}
-
-.dropdown-content a:hover {background: #f1f1f1}
-.dropdown:hover .dropdown-content {
-	display: block;
-}
-
 
 .white a {
 	color: #fff
@@ -82,20 +54,21 @@ li a:hover, .dropdown:hover .dropbtn {
 th {
 	border-bottom: thin dotted;
 	borer-collapse: collapse;
-	background-color: #EAEAEA;
+	background-color: #E1F5FE;
 }
 
 a {
 	text-decoration: none;
+	color: #01579B;
 }
 
 .button {
-	background-color: #ffc0cb;
+	background-color: #29B6F6;
 	cursor: pointer;
 	border: 1px solid;
 	border-bottom-color: #ff1493;
-	border-radius: 10px;
-	font-size: 13px;
-	border-width: auto;
+	border-radius: 3px;
+	font-size: 13px; border-width : auto;
 	broder-height: auto;
+	border-width: auto;
 }

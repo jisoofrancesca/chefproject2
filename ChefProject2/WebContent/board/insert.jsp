@@ -5,37 +5,43 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="table.css">
+<link rel="stylesheet" type="text/css" href="board/table.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
-	$(function(){
-		$('#sendBtn').click(function(){
-			var name=$('#name').val();
-			var subject=$('#subject').val();
-			var content=$('#content').val();
-			var pwd=$('#pwd').val();
-			
-			if(name.trim()==''){
+	$(function() {
+		$('#sendBt').click(function() {
+			var name = $('#name').val();
+			if (name.trim() == "") {
 				$('#name').focus();
-				$('#name').val('');
+				$('#name').val("");
+				alert('이름을 입력해주세요.');
 				return;
 			}
-			if(subject.trim()==''){
+			var subject = $('#subject').val();
+			if (subject.trim() == "") {
 				$('#subject').focus();
-				$('#subject').val('');
+				$('#subject').val("");
+				alert('제목을 입력해주세요.');
 				return;
 			}
-			if(content.trim()==''){
+
+			var content = $('#content').val();
+			if (content.trim() == "") {
 				$('#content').focus();
-				$('#content').val('');
+				$('#content').val("");
+				alert('내용을 입력해주세요.');
 				return;
 			}
-			if(pwd.trim()==''){
+
+			var pwd = $('#pwd').val();
+			if (pwd.trim() == "") {
 				$('#pwd').focus();
-				$('#pwd').val('');
+				$('#pwd').val("");
+				alert('비밀번호를 입력해주세요.');
 				return;
 			}
-			
-			$('#frm').submit();
+
+			$('#form').submit();
 		})
 	});
 </script>
@@ -45,41 +51,47 @@
 		<div id="div" align="center">
 			<h1>글쓰기</h1>
 		</div>
-		<form action="insert_ok.do" method="post" id="frm">
-		<table width="600" border="0">
-		<br/>		
-			<tr>
-				<th>카테고리</th>
-				<td><select>
-						<option>선택</option>
-						<option>한식</option>
-						<option>양식</option>
-						<option>중식</option>
-						<option>일식</option>
-						<option>기타</option>
-				</select></td>
-			</tr>
-			<tr>
-				<th>이름</th>
-				<td><input type="text" size="20" /></td>
-			</tr>
-			<tr>
-				<th>제목</th>
-				<td><input type="text" size="70" /></td>
-			</tr>
-			<tr>
-				<th>내용</th>
-				<td><textarea cols="71" rows="10"></textarea></td>
-			</tr>
-		</table>
-		<table width="600">
-			<tr>
-				<td align="right">
-					<input type="button" id="sendBtn" value="글쓰기"/> 
-					<input type="button" value="목록으로" onclick="javascript:history.back()"/>&nbsp;&nbsp;
-				</td>
-			</tr>
-		</table>
+		<br />
+		<form action="insert_ok.do" method="post" id="form">
+			<table width="600" border="0">
+				<tr>
+					<th width="30%">카테고리</th>
+					<td width="70%">
+					<select name="kind" id="kind">
+							<option>선택</option>
+							<option value="한식">한식</option>
+							<option value="양식">양식</option>
+							<option value="중식">중식</option>
+							<option value="일식">일식</option>
+							<option value="기타">기타</option>
+					</select>
+					</td>
+				</tr>
+				<tr>
+					<th width="30%">이름</th>
+					<td width="70%"><input type="text" size="20" name="name" id="name" /></td>
+				</tr>
+				<tr>
+					<th width="30%">제목</th>
+					<td width="70%"><input type="text" size="70" name="subject" id="subject" /></td>
+				</tr>
+				<tr>
+					<th width="30%">내용</th>
+					<td width="70%"><textarea cols="71" rows="10" name="content" id="content"></textarea></td>
+				</tr>
+				<tr>
+					<th width="30%">비밀번호</th>
+					<td width="70%"><input type="password" size="20" name="pwd" id="pwd"/></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<input type="button" id="sendBt" value="글쓰기" />
+						<input type="button" value="목록으로"	onclick="javascript:history.back()" />
+					</td>
+				</tr>
+			</table>
+
+>>>>>>> branch 'master' of https://github.com/jisoofrancesca/chefproject2.git
 		</form>
 	</center>
 </body>
