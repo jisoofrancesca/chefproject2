@@ -16,12 +16,14 @@ public class InsertOkModel implements Model{
 		String subject=req.getParameter("subject");	//name¼Ó¼º°ª
 		String content=req.getParameter("content");
 		String pwd=req.getParameter("pwd");
+		String kind = req.getParameter("kind");
 		
 		BoardDTO d=new BoardDTO();
 		d.setName(name);
 		d.setSubject(subject);
 		d.setContent(content);
 		d.setPwd(pwd);
+		d.setKind(kind);
 		
 		BoardDAO dao=new BoardDAO();
 		dao.boardInsert(d);
