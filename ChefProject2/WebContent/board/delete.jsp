@@ -5,22 +5,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="board/table.css">
 </head>
 <body>
 	<center>
-		<h3>삭제하기</h3>
+		<div id="div" align="center">
+			<h1>글쓰기</h1>
+		</div>
+		<br/>
 		<form action="delete_ok.do" method="post">
-			<table>
+			<table width="400">
 				<tr>
-					<td width="15%" align="right">비밀번호</td>
-					<td width="85%" align="left">
-						<input type="password" name="pwd" size="13">
+					<th width="25%" align="right" class="thcenter">비밀번호</th>
+					<td width="45%" align="left">
+						<input type="password" name="pwd" size="20">
 						<input type="hidden" name="no" value="${no }">
 						<input type="hidden" name="page" value="${page }">
-					</td>					
-				</tr>
-				<tr>
-					<td colspan="2" align="center">
+					</td>
+					<td colspan="2" align="center" width="30%">
 						<input type="submit" value="삭제">
 						<input type="button" value="취소" onclick="javascript:history.back()">
 					</td>

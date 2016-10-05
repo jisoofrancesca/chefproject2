@@ -11,10 +11,12 @@
 </head>
 <body>
 	<center>
-		<div id="div" align="center">
-			<h1><img alt="chef" src="board/image/chef.png" height="30px">&nbsp;The Recipe Board</h1>
+		<div class="outer">
+		<div  class="inner">
+		<div id="div" align="center" class="inner-title">
+			<h1><img alt="chef" src="board/image/chef.png" height="40px" style="vertical-align: top;">The Recipe Board</h1>
 		</div>
-		<div>
+		<!-- <div>
 			<ul>
 				<li><a href="#">전체보기</a></li>
 				<li class="dropdown">
@@ -28,16 +30,26 @@
 					</div>
 				</li>
 			</ul>
-		</div>
+		</div> -->
 		<br/>
-		<table border="0" width="1000">
+		<table border="0" width="900">
 			<tr>
-				<td>
-					<a href="insert.jsp"><img alt="write" src="board/image/write.png" width="40" height="auto"></a>
+				<td width="5%">
+					<a href="insert.do"><img alt="write" src="board/image/write.png" width="40" height="auto"></a>
+				</td>
+				<td width="95%" align="right"> 카테고리 : 
+					<select>
+						<option>한식</option>
+						<option>중식</option>
+						<option>일식</option>
+						<option>양식</option>
+						<option>기타</option>
+					</select>
+					<input type="button" value="검색" style="vertical-align: bottom" class="button"/>
 				</td>
 			</tr>
 		</table>
-		<table border="0" width="1000" id="table_content">
+		<table border="0" width="900" id="table_content">
 			<tr>
 				<th width="10%">번호</th>
 				<th width="50%">제목</th>
@@ -71,11 +83,17 @@
 			</tr>
 			</c:forEach>
 		</table>
-		<table border="0" width="1000" id="icon">
+		<table border="0" width="900" id="icon">
 			<tr>
 				<td align="center">
-					<a href="#" class="button">First</a>
-					<a href="#" class="button">Prev</a>
+					<c:if test="${curPage <= block }">
+						<a href="list.do?page=1" class="button">First</a>
+						<a href="list.do?page=${curPage>1?curPage-1:curPage }" class="button">Prev</a>
+					</c:if>
+					<c:if test="${curPage>block }">
+						<a href="list.do?page=1" class="button">First</a>
+						<a href="list.do?page=${frompage-1 }">Prev</a>
+					</c:if>
 					<c:forEach var="i" begin="${fromPage }" end="${toPage }">
 						[
 						<c:if test="${curPage==i }">
@@ -86,12 +104,20 @@
 						</c:if>
 						]
 					</c:forEach>
-					<a href="#" class="button">Next</a>
-					<a href="#" class="button">Last</a>
+					<c:if test="${toPage<totalPage }">
+						<a href="list.do?page=${toPage+1 }"><img src="board/image/first.png" alt="first"></a>
+						<a href="list.do?page=${totalPage }" class="button">Last</a>
+					</c:if>
+					<c:if test="${toPage >= totalPage }">
+						<a href="list.do?page=${curPage<totalPage? curPage+1: curPage }" class="button">Next</a>
+						<a href="list.do?page=${totalPage }" class="button">Last</a>
+					</c:if>
 					
 				</td>
 			</tr>
 		</table>
+		</div>
+		</div>
 	</center>
 </body>
 </html>
