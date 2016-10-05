@@ -277,36 +277,4 @@ public class BoardDAO {
       }
       return total;
    }
-   
-   // 수정하기
-   public boolean chefUpdate(BoardDTO dto) {
-	   boolean bCheck = false;
-	   try {
-		getConnection();
-		String sql = "SELECT pwd FROM chef WHERE no=?";
-		ps = conn.prepareStatement(sql);
-		ps.setInt(1, dto.getNo());
-		ResultSet rs = ps.executeQuery();
-		rs.next();
-		String db_pwd = rs.getString(1);
-		rs.close();
-		if(db_pwd.equals(dto.getPwd())) {
-			bCheck = true;
-			sql = "UPDATE chef SET kind=?, name=?, subject=?, content=? WHERE no=?";
-			ps = conn.prepareStatement(sql);
-			ps.setString(1, dto.getKind());
-			ps.setString(2, dto.getName());
-			ps.setString(3, dto.getSubject());
-			ps.setString(4, dto.getContent());
-			ps.setString(5, dto.getPwd());
-			ps.setInt(6, dto.getNo());
-			ps.executeUpdate();
-		}
-	} catch (Exception e) {
-		e.printStackTrace();
-	} finally {
-		disConnection();
-	} 
-	   return bCheck;
-   }
 }
