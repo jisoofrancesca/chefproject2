@@ -8,6 +8,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Chef Project</title>
 <link rel="stylesheet" type="text/css" href="board/list.css">
+<script type="text/javascript">
+$(function() {
+	$('#sendBtn').click(function() {
+		var name = $('#kind').val();
+		if (name.trim() == "") {
+			$('#kind').focus();
+			$('#kind').val("");
+			alert('종류를 선택해주세요.');
+			return;
+		}
+
+		$('#form').submit();
+	})
+});
+
+</script>
 </head>
 <body>
 	<center>
@@ -43,14 +59,17 @@
 					<a href="insert.do"><img alt="write" src="board/image/write.png" width="40" height="auto"></a>
 				<td width="5%">					
 				<td width="95%" align="right"> 카테고리 : 
-					<select>
-						<option>한식</option>
-						<option>중식</option>
-						<option>일식</option>
-						<option>양식</option>
-						<option>기타</option>
+				<form method="post" action="list.do" id="form">
+					<select name="kind" id="kind">
+							<option>선택</option>
+							<option value="한식">한식</option>
+							<option value="양식">양식</option>
+							<option value="중식">중식</option>
+							<option value="일식">일식</option>
+							<option value="기타">기타</option>
 					</select>
-					<input type="button" value="검색" style="vertical-align: bottom" class="button"/>
+					<input type="button" value="검색" style="vertical-align: bottom" class="button" id="sendBtn"/>
+				</form>
 				</td>
 			</tr>
 		</table>

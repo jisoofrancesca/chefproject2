@@ -253,20 +253,83 @@ public class BoardDAO {
          return bCheck;
       }
    
-   public void boardSearch(BoardDTO kind){
+   public List<BoardDTO> boardSearch(int page,String kind){
+	   List<BoardDTO> list=new ArrayList<BoardDTO>();
 	   try{
 		   getConnection();
 		   String sql="SELECT no,name,subject,regdate,hit,group_tab,TO_CHAR(regdate,'YYYY-MM-DD'),kind "
                + "FROM chef WHERE kind=? ORDER BY group_id DESC,group_step ASC,no DESC";
 		   ps=conn.prepareStatement(sql);
+		   ResultSet rs=ps.executeQuery();
+		   
+		   int rowSize=5;
+	       int i=0, j=0;
+	       int pagecnt=(page*rowSize)-rowSize;
+	       while(rs.next()){
+	          if(i<rowSize && j>=pagecnt){
+	               BoardDTO d=new BoardDTO();
+	               d.setNo(rs.getInt(1));
+	               d.setName(rs.getString(2));
+	               d.setSubject(rs.getString(3));
+	               d.setRegdate(rs.getDate(4));
+	               d.setHit(rs.getInt(5));
+	               d.setGroup_tab(rs.getInt(6));
+	               d.setDbday(rs.getString(7));
+	               d.setKind(rs.getString(8));               
+	               list.add(d);
+	               i++;
+	            }
+	            j++;
+	         }
+	         rs.close();
 		   
 	   }catch(Exception ex){
 		   System.out.println(ex.getMessage());
 	   }finally{
 		   disConnection();
 	   }
+	   return list;
    }
-      
+   
+   public int boardSearchTotal(String kind){
+	      int total=0;
+	      try{
+	         getConnection();
+	         String sql="SELECT CEIL(COUNT(*)/5) FROM chef WHERE kind=?";
+	         ps=conn.prepareStatement(sql);
+	         ps.setString(1, kind);
+	         ResultSet rs=ps.executeQuery();
+	         rs.next();
+	         total=rs.getInt(1);
+	         rs.close();
+	      }catch(Exception ex){
+	         System.out.println(ex.getMessage());
+	      }finally{
+	         disConnection();
+	      }
+	      return total;
+	   }
+	   
+	   public int boardSearchCount(String kind){
+	      int total=0;
+	      try{
+	         getConnection();
+	         String sql="SELECT COUNT(*) FROM chef WHERE kind=?";
+	         ps=conn.prepareStatement(sql);
+	         ps.setString(1, kind);
+	         ResultSet rs=ps.executeQuery();
+	         rs.next();
+	         total=rs.getInt(1);
+	         rs.close();
+	      }catch(Exception ex){
+	         System.out.println(ex.getMessage());
+	      }finally{
+	         disConnection();
+	      }
+	      return total;
+	   }
+   
+   
    public int boardTotal(){
       int total=0;
       try{

@@ -90,8 +90,6 @@
 					</td>
 				</tr>
 			</table>
-
->>>>>>> branch 'master' of https://github.com/jisoofrancesca/chefproject2.git
 		</form>
 	</center>
 </body>
