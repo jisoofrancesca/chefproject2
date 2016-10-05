@@ -45,7 +45,7 @@
 						<option>양식</option>
 						<option>기타</option>
 					</select>
-					<input type="button" value="검색" style="vertical-align: bottom" class="button"/>
+					<a href="#"><img alt="search" src="board/image/search.png" width="40" height="auto"></a>
 				</td>
 			</tr>
 		</table>
@@ -63,8 +63,9 @@
 				<td width="50%" align="left">
 					<c:if test="${dto.group_tab>0 }">
 						<c:forEach var="i" begin="1" end="${dto.group_tab }">
-							&nbsp;&nbsp;<img alt="comment" src="board/image/comment.png">						
+							&nbsp;&nbsp;
 						</c:forEach>
+							<img alt="comment" src="board/image/comment.png" height="20">						
 					</c:if>
 					<c:if test="${msg == dto.subject }">
 						<font color="red">${dto.subject }</font>
@@ -83,7 +84,7 @@
 			</tr>
 			</c:forEach>
 		</table>
-		<table border="0" width="900" id="icon">
+		<table border="0" width="900" id="icon" class="table_content">
 			<tr>
 				<td align="center">
 					<c:if test="${curPage <= block }">
@@ -116,6 +117,10 @@
 				</td>
 			</tr>
 		</table>
+		</div>
+		<div id="footer">
+			<b>MADE-BY 이지수 최연욱 구경태 최태석</b>&nbsp;&nbsp;COPYRIGHT &copy; SIST. All Rights Reserved
+			<address></address>
 		</div>
 		</div>
 	</center>

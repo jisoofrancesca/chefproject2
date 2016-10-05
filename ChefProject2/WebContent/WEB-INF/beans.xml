@@ -8,4 +8,6 @@
 	<bean id="reply_ok" class="com.model.ReplyOkModel"/>
 	<bean id="delete" class="com.model.DeleteModel"/>
 	<bean id="delete_ok" class="com.model.DeleteOkModel"/>
+	<bean id="update" class="com.model.UpdateModel"/>
+	<bean id="update_ok" class="com.model.UpdateOkModel"/>
 </beans>
