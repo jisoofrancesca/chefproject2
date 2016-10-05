@@ -108,14 +108,26 @@ public class BoardDAO {
 	   public void boardInsert(BoardDTO d){
 			try{
 				getConnection();
-				String sql="INSERT INTO board(no,name,subject,content,pwd,group_id) "
-						+ "VALUES((SELECT NVL(MAX(no)+1,1) FROM board),?,?,?,?,"
-						+ "(SELECT NVL(MAX(group_id)+1,1) FROM board))";
+				if(d.getKind().equals(null)){
+				String sql="INSERT INTO chef(no,name,subject,content,pwd,group_id) "
+						+ "VALUES((SELECT NVL(MAX(no)+1,1) FROM chef),?,?,?,?,"
+						+ "(SELECT NVL(MAX(group_id)+1,1) FROM chef))";
 				ps=conn.prepareStatement(sql);
 				ps.setString(1, d.getName());
 				ps.setString(2, d.getSubject());
 				ps.setString(3, d.getContent());
 				ps.setString(4, d.getPwd());
+				}else{
+				String sql="INSERT INTO chef(no,name,subject,content,pwd,group_id,kind) "
+						+ "VALUES((SELECT NVL(MAX(no)+1,1) FROM chef),?,?,?,?,"
+						+ "(SELECT NVL(MAX(group_id)+1,1) FROM chef),?)";
+				ps=conn.prepareStatement(sql);
+				ps.setString(1, d.getName());
+				ps.setString(2, d.getSubject());
+				ps.setString(3, d.getContent());
+				ps.setString(4, d.getPwd());
+				ps.setString(5, d.getKind());
+				}
 				ps.executeUpdate();			
 			}catch(Exception ex){
 				System.out.println(ex.getMessage());
@@ -128,7 +140,7 @@ public class BoardDAO {
 			try{
 				getConnection();
 				// 답글을 달려는 글의 정보불러오기
-				String sql="SELECT group_id,group_step,group_tab FROM board WHERE no=?";
+				String sql="SELECT group_id,group_step,group_tab FROM chef WHERE no=?";
 				ps=conn.prepareStatement(sql);
 				ps.setInt(1, root);			
 				ResultSet rs=ps.executeQuery();
@@ -139,21 +151,21 @@ public class BoardDAO {
 				rs.close();
 				ps.close();
 				
-				sql="UPDATE board SET group_step=group_step+1 WHERE group_id=? AND group_step>?";
+				sql="UPDATE chef SET group_step=group_step+1 WHERE group_id=? AND group_step>?";
 				ps=conn.prepareStatement(sql);
 				ps.setInt(1, gi);
 				ps.setInt(2, gs);
 				ps.executeQuery();
 				ps.close();
 				
-				sql="UPDATE board SET depth=depth+1 WHERE no=?";
+				sql="UPDATE chef SET depth=depth+1 WHERE no=?";
 				ps=conn.prepareStatement(sql);
 				ps.setInt(1, root);
 				ps.executeUpdate();
 				ps.close();
 				
-				sql="INSERT INTO board(no,name,subject,content,pwd,group_id,group_step,group_tab,root)"
-						+ " VALUES ((SELECT NVL(MAX(no)+1,1) FROM board),?,?,?,?,?,?,?,?)";
+				sql="INSERT INTO chef(no,name,subject,content,pwd,group_id,group_step,group_tab,root,kind)"
+						+ " VALUES ((SELECT NVL(MAX(no)+1,1) FROM chef),?,?,?,?,?,?,?,?,?)";
 				ps=conn.prepareStatement(sql);
 				ps.setString(1, dto.getName());
 				ps.setString(2, dto.getSubject());
@@ -163,6 +175,7 @@ public class BoardDAO {
 				ps.setInt(6, gs+1);
 				ps.setInt(7, gt+1);
 				ps.setInt(8, root);
+				ps.setString(9, dto.getKind());
 				
 				ps.executeUpdate();
 				
@@ -179,7 +192,7 @@ public class BoardDAO {
 			try{			
 				getConnection();
 				// 패스워드 가져오기
-				String sql="SELECT pwd FROM board WHERE no=?";
+				String sql="SELECT pwd FROM chef WHERE no=?";
 				ps=conn.prepareStatement(sql);
 				ps.setInt(1, no);
 				ResultSet rs=ps.executeQuery();
@@ -192,7 +205,7 @@ public class BoardDAO {
 				if(db_pwd.equals(pwd)){
 					bCheck=true;
 					// 루트 ???와 답글이 있는지 확인
-					sql="SELECT root,depth FROM board WHERE no=?";
+					sql="SELECT root,depth FROM chef WHERE no=?";
 					ps=conn.prepareStatement(sql);
 					ps.setInt(1, no);
 					rs=ps.executeQuery();
@@ -204,14 +217,14 @@ public class BoardDAO {
 
 					//답글이없는경우 삭제
 					if(depth==0){
-						sql="DELETE FROM board WHERE no=?";
+						sql="DELETE FROM chef WHERE no=?";
 						ps=conn.prepareStatement(sql);
 						ps.setInt(1, no);
 						ps.executeUpdate();
 						ps.close();
 					}else{
 						//Update
-						sql="UPDATE board SET subject=?,content=? WHERE no=?";
+						sql="UPDATE chef SET subject=?,content=? WHERE no=?";
 						String msg="삭제된 게시물입니다";
 						ps=conn.prepareStatement(sql);
 						ps.setString(1, msg);
@@ -222,7 +235,7 @@ public class BoardDAO {
 						
 					}
 					//depth -1
-					sql="UPDATE board SET depth=depth-1 WHERE no=?";
+					sql="UPDATE chef SET depth=depth-1 WHERE no=?";
 					ps=conn.prepareStatement(sql);
 					ps.setInt(1, root);
 					ps.executeUpdate();

@@ -6,14 +6,48 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="table.css">
+<script type="text/javascript">
+	$(function(){
+		$('#sendBtn').click(function(){
+			var name=$('#name').val();
+			var subject=$('#subject').val();
+			var content=$('#content').val();
+			var pwd=$('#pwd').val();
+			
+			if(name.trim()==''){
+				$('#name').focus();
+				$('#name').val('');
+				return;
+			}
+			if(subject.trim()==''){
+				$('#subject').focus();
+				$('#subject').val('');
+				return;
+			}
+			if(content.trim()==''){
+				$('#content').focus();
+				$('#content').val('');
+				return;
+			}
+			if(pwd.trim()==''){
+				$('#pwd').focus();
+				$('#pwd').val('');
+				return;
+			}
+			
+			$('#frm').submit();
+		})
+	});
+</script>
 </head>
 <body>
 	<center>
 		<div id="div" align="center">
 			<h1>글쓰기</h1>
 		</div>
+		<form action="insert_ok.do" method="post" id="frm">
 		<table width="600" border="0">
-		<br/>
+		<br/>		
 			<tr>
 				<th>카테고리</th>
 				<td><select>
@@ -41,11 +75,12 @@
 		<table width="600">
 			<tr>
 				<td align="right">
-					<input type="button" id="sendBt" value="글쓰기"/> 
+					<input type="button" id="sendBtn" value="글쓰기"/> 
 					<input type="button" value="목록으로" onclick="javascript:history.back()"/>&nbsp;&nbsp;
 				</td>
 			</tr>
 		</table>
+		</form>
 	</center>
 </body>
 </html>

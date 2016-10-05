@@ -32,7 +32,6 @@ public class DispatcherServlet extends HttpServlet{
 	public void init(ServletConfig config) throws ServletException {
 		try{
 			String path=config.getInitParameter("contextConfigLocation");
-			System.out.println(path+"@@");
 			
 			DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
 			DocumentBuilder db=dbf.newDocumentBuilder();
@@ -48,7 +47,6 @@ public class DispatcherServlet extends HttpServlet{
 												  //  => 메소드,멤버변수,생성자 제어가 가능
 				//메모리 할당
 				Object obj=clsName.newInstance();
-				System.out.println(obj);
 				
 				clsMap.put(id, obj);
 			}
@@ -70,7 +68,6 @@ public class DispatcherServlet extends HttpServlet{
 			Model model=(Model)clsMap.get(cmd);
 			String jsp=model.handlerRequest(request, response);
 			String temp=jsp.substring(jsp.lastIndexOf('.')+1);
-			System.out.println(temp);
 			if(temp.equals("do")){
 				response.sendRedirect(jsp);
 			}else{
