@@ -39,9 +39,6 @@
 		<br/>
 		<table border="0" width="900">
 			<tr>
-				<td>
-					<a href="insert.do"><img alt="write" src="board/image/write.png" width="40" height="auto"></a>
-
 				<td width="5%">
 					<a href="insert.do"><img alt="write" src="board/image/write.png" width="40" height="auto"></a>
 				</td>
