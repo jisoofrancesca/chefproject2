@@ -4,7 +4,7 @@ body, html, div {
 	font-size: 14px;
 	margin: 0px;
 	padding: 0px;
-	background-color: #ECEFF1;
+	background-color: rgba(255,255,255,0.5);
 }
 
 .inner {
@@ -12,7 +12,7 @@ body, html, div {
 	background-color: #EAEAEA;
 	background-size: cover;
 	width: 1200px;
-	height: 1060px;
+	height: 900px;
 	box-shadow: 5px 0px 5px 5px #AAAAAA;
 	border-radius: 5.5em;
 }
@@ -25,9 +25,9 @@ body, html, div {
 #div {
 	background-color: #CFD8DC;
 	background-size: cover;
-	height: 100px;
+	height: 120px;
 	border-bottom: solid;
-	border-bottom-width: 30px;
+	border-bottom-width: 20px;
 	border-color: #37474F;
 }
 
@@ -40,9 +40,6 @@ h1 {
 	top: 30px;
 }
 
-.white a {
-	color: #fff
-}
 
 #table_content {
 	border-top: solid;
@@ -52,9 +49,12 @@ h1 {
 }
 
 th {
-	border-bottom: thin dotted;
+	border-bottom: solid;
+	border-bottom-width: 1px;
+	border-color: #000000;
 	borer-collapse: collapse;
-	background-color: #E1F5FE;
+	background-color: #263238;
+	color: #FFFFFF;
 }
 
 a {
@@ -71,4 +71,18 @@ a {
 	font-size: 13px; border-width : auto;
 	broder-height: auto;
 	border-width: auto;
+}
+
+#footer
+{
+    background-color: #fff;
+    background-color: rgba(255,255,255,0.5);
+    border-top: 1px solid #eee;
+    color: #555;
+    font-size: 0.85em;
+    /*
+    -moz-transition: all 200ms linear;
+    transition: all 200ms linear;
+    transition-property: border, background-color;
+    */
 }

@@ -1,15 +1,34 @@
 @CHARSET "EUC-KR";
 
-body, html, div, h1 {
+body, html, div {
 	font-size: 14px;
 	margin: 0px;
 	padding: 0px;
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.inner {
+	margin: 10px;
+	background-color: #EAEAEA;
+	background-size: cover;
+	width: 1200px;
+	height: 900px;
+	box-shadow: 5px 0px 5px 5px #AAAAAA;
+	border-radius: 5.5em;
+}
+
+.inner-title {
+	border-top-left-radius: 5.5em;
+	border-top-right-radius: 5.5em;
 }
 
 #div {
-	background-color: #80D8FF;
+	background-color: #CFD8DC;
 	background-size: cover;
-	height: 100px;
+	height: 120px;
+	border-bottom: solid;
+	border-bottom-width: 20px;
+	border-color: #37474F;
 }
 
 h1 {
@@ -26,24 +45,24 @@ h2 {
 	top: 75px;
 }
 
-input[type="button"],
-input[type="submit"] {
+input[type="button"], input[type="submit"] {
 	border-radius: 10px;
 	background-color: #03A9F4;
 	font-color: white;
 }
 
 .thcenter {
-	background-color: #E1F5FE;
+	background-color: #263238;
+	color: #FFFFFF;
 }
 
 .tdleft {
 	border-bottom: thin dotted;
-	border-color: #03a9f4;
+	border-color: #263238;
 }
 
 .tdcontent {
 	border: solid;
-	border-color: #03a9f4;
+	border-color: #263238;
 	border-width: 1px;
 }

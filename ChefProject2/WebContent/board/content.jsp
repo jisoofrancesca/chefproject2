@@ -9,7 +9,9 @@
 </head>
 <body>
 	<center>
-		<div id="div" align="center">
+		<div class="outer">
+		<div class="inner">
+		<div id="div" align="center" class="inner-title">
 			<h1>내용보기</h1>
 		</div>
 		<br />
@@ -35,13 +37,15 @@
 			</tr>
 			<tr>
 				<td align="right" colspan="4">
-					<a href="#"><input type="button" value="답글" class="button_content"/></a> 
-					<a href="#"><input type="button" value="수정" class="button_content"/></a> 
+					<a href="reply.do?no=${dto.no }&page=${page}"><input type="button" value="답글" class="button_content"/></a> 
+					<a href="update.do?no=${dto.no }&page=${page}"><input type="button" value="수정" class="button_content"/></a> 
 					<a href="delete.do?no=${dto.no }&page=${page}"><input type="button" value="삭제" class="button_content"/></a>
 					<a href="list.do?page=${page}"><input type="button" value="목록" class="button_content"/></a>
 				</td>
 			</tr>
 		</table>
+		</div>
+		</div>
 	</center>
 </body>
 </html>
