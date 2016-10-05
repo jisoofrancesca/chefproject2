@@ -38,7 +38,7 @@
 			
 			<tr>
 				<td align="right" colspan="4">
-					<a href="#"><input type="button" value="답글" class="button_content"/></a> 
+					<a href="reply.do?no=${dto.no }&page=${page}"><input type="button" value="답글" class="button_content"/></a> 
 					<a href="#"><input type="button" value="수정" class="button_content"/></a> 
 					<a href="delete.do?no=${dto.no }&page=${page}"><input type="button" value="삭제" class="button_content"/></a>
 					<a href="list.do?page=${page}"><input type="button" value="목록" class="button_content"/></a>

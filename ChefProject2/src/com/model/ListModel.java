@@ -25,7 +25,7 @@ public class ListModel implements Model{
 		int count=dao.boardCount();
 		count=count-((curPage*5)-5);
 		
-		String msg="삭제된 게시물 입니다.";
+		String msg="삭제된 게시물입니다";
 		String today=new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 				
 		//[1][2][3][4][5]

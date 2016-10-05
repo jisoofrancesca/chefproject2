@@ -108,6 +108,16 @@ public class BoardDAO {
       public void boardInsert(BoardDTO d){
          try{
             getConnection();
+            if(d.getKind().equals("º±≈√")){
+            	String sql="INSERT INTO chef(no,name,subject,content,pwd,group_id) "
+                        + "VALUES((SELECT NVL(MAX(no)+1,1) FROM chef),?,?,?,?,"
+                        + "(SELECT NVL(MAX(group_id)+1,1) FROM chef))";
+                  ps=conn.prepareStatement(sql);
+                  ps.setString(1, d.getName());
+                  ps.setString(2, d.getSubject());
+                  ps.setString(3, d.getContent());
+                  ps.setString(4, d.getPwd());
+            }else{
             String sql="INSERT INTO chef(no,name,subject,content,pwd,group_id,kind) "
                   + "VALUES((SELECT NVL(MAX(no)+1,1) FROM chef),?,?,?,?,"
                   + "(SELECT NVL(MAX(group_id)+1,1) FROM chef),?)";
@@ -117,6 +127,7 @@ public class BoardDAO {
             ps.setString(3, d.getContent());
             ps.setString(4, d.getPwd());
             ps.setString(5, d.getKind());
+            }
             ps.executeUpdate();         
          }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -242,6 +253,20 @@ public class BoardDAO {
          return bCheck;
       }
    
+   public void boardSearch(BoardDTO kind){
+	   try{
+		   getConnection();
+		   String sql="SELECT no,name,subject,regdate,hit,group_tab,TO_CHAR(regdate,'YYYY-MM-DD'),kind "
+               + "FROM chef WHERE kind=? ORDER BY group_id DESC,group_step ASC,no DESC";
+		   ps=conn.prepareStatement(sql);
+		   
+	   }catch(Exception ex){
+		   System.out.println(ex.getMessage());
+	   }finally{
+		   disConnection();
+	   }
+   }
+      
    public int boardTotal(){
       int total=0;
       try{

@@ -41,9 +41,7 @@
 			<tr>
 				<td>
 					<a href="insert.do"><img alt="write" src="board/image/write.png" width="40" height="auto"></a>
-				<td width="5%">
-					<a href="insert.do"><img alt="write" src="board/image/write.png" width="40" height="auto"></a>
-				</td>
+				<td width="5%">					
 				<td width="95%" align="right"> 카테고리 : 
 					<select>
 						<option>한식</option>
@@ -70,8 +68,9 @@
 				<td width="50%" align="left">
 					<c:if test="${dto.group_tab>0 }">
 						<c:forEach var="i" begin="1" end="${dto.group_tab }">
-							&nbsp;&nbsp;<img alt="comment" src="board/image/comment.png">						
+							&nbsp;&nbsp;						
 						</c:forEach>
+						<img alt="comment" src="board/image/comment.png">
 					</c:if>
 					<c:if test="${msg == dto.subject }">
 						<font color="red">${dto.subject }</font>
