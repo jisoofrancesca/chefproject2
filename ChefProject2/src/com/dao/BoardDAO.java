@@ -328,6 +328,73 @@ public class BoardDAO {
 	      }
 	      return total;
 	   }
+	   
+	   public BoardDTO chefUpdateData(int no){	// 지금 메소드와 chefContentData 선택하시면 됩니다.
+			BoardDTO dto = new BoardDTO();
+			
+			try{
+				getConnection();
+				
+				String sql = "SELECT no,name,subject,content,kind "
+							+"FROM chef "
+							+"WHERE no=?";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, no);
+				ResultSet rs = ps.executeQuery();
+				
+				rs.next();
+				dto.setNo(rs.getInt(1));
+				dto.setName(rs.getString(2));
+				dto.setSubject(rs.getString(3));
+				dto.setContent(rs.getString(4));
+				dto.setKind(rs.getString(5));
+				
+				rs.close();
+				
+			}catch(Exception ex){
+				System.out.println(ex.getMessage());
+			}finally{
+				disConnection();
+			}
+			
+			return dto;
+		}
+		
+		public boolean chefUpdate(BoardDTO dto){
+			boolean bCheck = false;
+			
+			try{
+				getConnection();
+				
+				String sql = "SELECT pwd FROM chef " + "WHERE no=?";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, dto.getNo());
+				ResultSet rs = ps.executeQuery();
+				rs.next();
+				String db_pwd = rs.getString(1);
+				rs.close();
+				
+				if(db_pwd.equals(dto.getPwd())){
+					bCheck = true;
+					sql = "UPDATE chef SET " + "subject=?,content=?,kind=? " + "WHERE no=?";
+					ps = conn.prepareStatement(sql);
+					ps.setString(1, dto.getSubject());
+					ps.setString(2, dto.getContent());
+					ps.setString(3, dto.getKind());
+					ps.setInt(4, dto.getNo());
+					ps.executeUpdate();
+				}else{
+					bCheck = false;
+				}
+				
+			}catch(Exception ex){
+				System.out.println(ex.getMessage());
+			}finally{
+				disConnection();
+			}
+			
+			return bCheck;
+		}
    
    
    public int boardTotal(){

@@ -8,20 +8,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Chef Project</title>
 <link rel="stylesheet" type="text/css" href="board/list.css">
-<script type="text/javascript">
-	$(function(){
-		$('#Btn').click(function(){
-			$("#frm").submit();
-		})
-	});
-</script>
 </head>
 <body>
    <center>
       <div class="outer">
       <div  class="inner">
       <div id="div" align="center" class="inner-title">
-         <a href="list.do" name="home"><h1><img alt="chef" src="board/image/chef.png" height="40px" style="vertical-align: top;">The Recipe Board</h1></a>
+         <a href="list.do" id="home"><h1><img alt="chef" src="board/image/chef.png" height="40px" style="vertical-align: top;">The Recipe Board</h1></a>
       </div>
       <br/>
       <table border="0" width="900">
@@ -30,7 +23,7 @@
                <a href="insert.do"><img alt="write" src="board/image/write.png" width="40" height="auto"></a>
             </td>
             <td width="95%" align="right"> 카테고리 : 
-            <form id="frm" action="list.do" method="post">
+               <form id="frm" action="list.do" method="post">
                <select name="kind">
                   <option>선택</option>
 					<option value="한식">한식</option>
@@ -88,7 +81,7 @@
                </c:if>
                <c:if test="${curPage>block }">
                   <a href="list.do?page=1" class="button">First</a>
-                  <a href="list.do?page=${frompage-1 }">Prev</a>
+                  <a href="list.do?page=${curPage-1 }" class="button">Prev</a>
                </c:if>
                <c:forEach var="i" begin="${fromPage }" end="${toPage }">
                   [
@@ -101,7 +94,7 @@
                   ]
                </c:forEach>
                <c:if test="${toPage<totalPage }">
-                  <a href="list.do?page=${toPage+1 }"><img src="board/image/first.png" alt="first"></a>
+                  <a href="list.do?page=${curPage+1 }" class="button">Next</a>
                   <a href="list.do?page=${totalPage }" class="button">Last</a>
                </c:if>
                <c:if test="${toPage >= totalPage }">
@@ -114,7 +107,7 @@
       </table>
       </div>
       <div id="footer">
-         <b>MADE-BY 이지수 최연욱 구경태 최태석</b>&nbsp;&nbsp;COPYRIGHT &copy; SIST. All Rights Reserved
+         <b>MADE-BY 구경태 이지수 최연욱 최태석 </b>&nbsp;&nbsp;COPYRIGHT &copy; SIST. All Rights Reserved
          <address></address>
       </div>
       </div>
