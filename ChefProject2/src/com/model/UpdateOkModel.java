@@ -11,7 +11,7 @@ public class UpdateOkModel implements Model {
 	@Override
 	public String handlerRequest(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
-		String listHome = null;
+		//String listHome = null;
 
 		req.setCharacterEncoding("EUC-KR");
 
@@ -21,7 +21,8 @@ public class UpdateOkModel implements Model {
 		String content = req.getParameter("content");
 		String pwd = req.getParameter("pwd");
 		String kind = req.getParameter("kind");
-
+		String page = req.getParameter("page");
+		
 		BoardDTO dto = new BoardDTO();
 		dto.setNo(Integer.parseInt(no));
 		dto.setName(name);
@@ -29,17 +30,26 @@ public class UpdateOkModel implements Model {
 		dto.setContent(content);
 		dto.setPwd(pwd);
 		dto.setKind(kind);
-
-		System.out.println(kind);
-
+		
 		BoardDAO dao = new BoardDAO();
 		boolean bCheck = dao.chefUpdate(dto);
+		req.setAttribute("bCheck", bCheck);
+		req.setAttribute("page", page);
+		
+		return "board/update_ok.jsp";
+		
+		//System.out.println(kind);
 
-		if (bCheck == true) {
+		//BoardDAO dao = new BoardDAO();
+		//boolean bCheck = dao.chefUpdate(dto);
+
+		/*if (bCheck == true) {
 			listHome = "list.do";
+		} else {
+			
 		}
 
-		return listHome;
+		return listHome;*/
 	}
 
 }

@@ -6,10 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="board/table.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	$(function(){
 		$('#sendbtn').click(function(){
-			var pwd = $('#pwd').varl();
+			var pwd = $('#pwd').val();
 			if(pwd.trim()==""){
 				$('#pwd').focus();
 				$('#pwd').val("");
@@ -62,7 +63,7 @@
 			<tr>
 				<th class="thcenter" width="30%">비밀번호</th>
 				<td class="tdleft" width="70%">
-					<input type="password" size="20" id="pwd" name="pwd" value="${dto.pwd }"/>
+					<input type="password" size="20" id="pwd" name="pwd"/>
 					<input type="hidden" name="no" value="${no }"/>
 					<input type="hidden" name="page" value="${page }"/>
 				</td>
