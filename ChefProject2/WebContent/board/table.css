@@ -46,14 +46,14 @@ h2 {
 }
 
 input[type="button"], input[type="submit"] {
-   background-color: #B0BEC5;
-   cursor: pointer;
-   border: 1px solid;
-   border-bottom-color: #455A64;
-   border-radius: 3px;
-   font-size: 13px; 
-   border-width : auto;
-   broder-height: auto;
+	background-color: #B0BEC5;
+	cursor: pointer;
+	border: 1px solid;
+	border-bottom-color: #455A64;
+	border-radius: 3px;
+	font-size: 13px; 
+	border-width : auto;
+	broder-height: auto;
 }
 
 .thcenter {

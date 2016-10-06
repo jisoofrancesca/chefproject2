@@ -30,7 +30,7 @@
 			</tr>
 			<tr>
 				<th width="20%" class="thcenter" class="thcenter">Á¦¸ñ</th>
-				<td width="30%" colspan="3" class="tdleft">&nbsp;${dto.subject }</td>
+				<td width="30%" colspan="3" class="tdleft">&nbsp;${dto.kind}&nbsp;${dto.subject }</td>
 			</tr>
 			<tr>
 				<td colspan="4" align="left" valign="top" height="200" class="tdcontent">${dto.content }</td>

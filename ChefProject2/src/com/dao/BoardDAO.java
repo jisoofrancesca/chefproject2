@@ -214,7 +214,6 @@ public class BoardDAO {
                int depth=rs.getInt(2);
                rs.close();
                ps.close();
-
                //답글이없는경우 삭제
                if(depth==0){
                   sql="DELETE FROM chef WHERE no=?";
@@ -366,4 +365,6 @@ public class BoardDAO {
       }
       return total;
    }
+
+
 }
