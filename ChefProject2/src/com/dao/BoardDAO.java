@@ -260,6 +260,7 @@ public class BoardDAO {
 		   String sql="SELECT no,name,subject,regdate,hit,group_tab,TO_CHAR(regdate,'YYYY-MM-DD'),kind "
                + "FROM chef WHERE kind=? ORDER BY group_id DESC,group_step ASC,no DESC";
 		   ps=conn.prepareStatement(sql);
+		   ps.setString(1, kind);
 		   ResultSet rs=ps.executeQuery();
 		   
 		   int rowSize=5;
@@ -365,5 +366,4 @@ public class BoardDAO {
       }
       return total;
    }
-   
 }

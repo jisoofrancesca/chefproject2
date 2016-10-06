@@ -13,9 +13,11 @@ public class ListModel implements Model{
 	@Override
 	public String handlerRequest(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		BoardDAO dao=new BoardDAO();
+		req.setCharacterEncoding("EUC-KR");
 		List<BoardDTO> list=new ArrayList<>();
 		
 		String kind=req.getParameter("kind");
+		System.out.println(kind);
 		String strPage=req.getParameter("page");
 		if(strPage==null)
 			strPage="1";
@@ -67,9 +69,10 @@ public class ListModel implements Model{
 			req.setAttribute("block", block);
 			req.setAttribute("fromPage", fromPage);
 			req.setAttribute("toPage", toPage);
+			req.setAttribute("kind", kind);
 		}
 		
-		
+
 		
 		return "board/list.jsp";
 	}

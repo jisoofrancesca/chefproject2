@@ -1,74 +1,87 @@
 @CHARSET "EUC-KR";
 
 body, html, div {
-	font-size: 14px;
-	margin: 0px;
-	padding: 0px;
-	background-color: #ECEFF1;
+   font-size: 14px;
+   margin: 0px;
+   padding: 0px;
+   background-color: rgba(255,255,255,0.5);
 }
 
 .inner {
-	margin: 10px;
-	background-color: #EAEAEA;
-	background-size: cover;
-	width: 1200px;
-	height: 1060px;
-	box-shadow: 5px 0px 5px 5px #AAAAAA;
-	border-radius: 5.5em;
+   margin: 10px;
+   background-color: #EAEAEA;
+   background-size: cover;
+   width: 1200px;
+   height: 900px;
+   box-shadow: 5px 0px 5px 5px #AAAAAA;
+   border-radius: 5.5em;
 }
 
 .inner-title {
-	border-top-left-radius: 5.5em;
-	border-top-right-radius: 5.5em;
+   border-top-left-radius: 5.5em;
+   border-top-right-radius: 5.5em;
 }
 
 #div {
-	background-color: #CFD8DC;
-	background-size: cover;
-	height: 100px;
-	border-bottom: solid;
-	border-bottom-width: 30px;
-	border-color: #37474F;
+   background-color: #CFD8DC;
+   background-size: cover;
+   height: 120px;
+   border-bottom: solid;
+   border-bottom-width: 20px;
+   border-color: #37474F;
 }
-
 
 h1 {
-	font-size: 40px;
-	font-family: "Courier New";
-	display: inline;
-	position: relative;
-	top: 30px;
+   font-size: 40px;
+   font-family: "Courier New";
+   display: inline;
+   position: relative;
+   top: 30px;
 }
 
-.white a {
-	color: #fff
-}
 
 #table_content {
-	border-top: solid;
-	border-width: 1px;
-	border-bottom: solid;
-	border-bottom-width: 1px;
+   border-top: solid;
+   border-width: 1px;
+   border-bottom: solid;
+   border-bottom-width: 1px;
 }
 
 th {
-	border-bottom: thin dotted;
-	borer-collapse: collapse;
-	background-color: #E1F5FE;
+   border-bottom: solid;
+   border-bottom-width: 1px;
+   border-color: #000000;
+   borer-collapse: collapse;
+   background-color: #263238;
+   color: #FFFFFF;
 }
 
 a {
-	text-decoration: none;
-	color: #01579B;
+   text-decoration: none;
+   color: #01579B;
 }
 
 .button {
-	background-color: #29B6F6;
-	cursor: pointer;
-	border: 1px solid;
-	border-bottom-color: #ff1493;
-	border-radius: 3px;
-	font-size: 13px; border-width : auto;
-	broder-height: auto;
-	border-width: auto;
+   background-color: #B0BEC5;
+   cursor: pointer;
+   border: 1px solid;
+   border-bottom-color: #455A64;
+   border-radius: 3px;
+   font-size: 13px; 
+   border-width : auto;
+   broder-height: auto;
+}
+
+#footer
+{
+    background-color: #fff;
+    background-color: rgba(255,255,255,0.5);
+    border-top: 1px solid #eee;
+    color: #555;
+    font-size: 0.85em;
+    /*
+    -moz-transition: all 200ms linear;
+    transition: all 200ms linear;
+    transition-property: border, background-color;
+    */
 }
