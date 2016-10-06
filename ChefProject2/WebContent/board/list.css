@@ -63,14 +63,14 @@ a {
 }
 
 .button {
-	background-color: #29B6F6;
+	background-color: #B0BEC5;
 	cursor: pointer;
 	border: 1px solid;
-	border-bottom-color: #ff1493;
+	border-bottom-color: #455A64;
 	border-radius: 3px;
-	font-size: 13px; border-width : auto;
+	font-size: 13px; 
+	border-width : auto;
 	broder-height: auto;
-	border-width: auto;
 }
 
 #footer

@@ -99,7 +99,7 @@
 					</c:if>
 					<c:if test="${curPage>block }">
 						<a href="list.do?page=1" class="button">First</a>
-						<a href="list.do?page=${frompage-1 }">Prev</a>
+						<a href="list.do?page=${curPage-1 }" class="button">Prev</a>
 					</c:if>
 					<c:forEach var="i" begin="${fromPage }" end="${toPage }">
 						[
@@ -112,7 +112,7 @@
 						]
 					</c:forEach>
 					<c:if test="${toPage<totalPage }">
-						<a href="list.do?page=${toPage+1 }"><img src="board/image/first.png" alt="first"></a>
+						<a href="list.do?page=${curPage+1 }" class="button">Next</a>
 						<a href="list.do?page=${totalPage }" class="button">Last</a>
 					</c:if>
 					<c:if test="${toPage >= totalPage }">
@@ -125,7 +125,7 @@
 		</table>
 		</div>
 		<div id="footer">
-			<b>MADE-BY 이지수 최연욱 구경태 최태석</b>&nbsp;&nbsp;COPYRIGHT &copy; SIST. All Rights Reserved
+			<b>MADE-BY 구경태 이지수 최연욱 최태석 </b>&nbsp;&nbsp;COPYRIGHT &copy; SIST. All Rights Reserved
 			<address></address>
 		</div>
 		</div>
