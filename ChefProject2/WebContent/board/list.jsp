@@ -21,7 +21,7 @@
       <div class="outer">
       <div  class="inner">
       <div id="div" align="center" class="inner-title">
-         <h1><img alt="chef" src="board/image/chef.png" height="40px" style="vertical-align: top;">The Recipe Board</h1>
+         <a href="list.do" id="home"><h1><img alt="chef" src="board/image/chef.png" height="40px" style="vertical-align: top;">The Recipe Board</h1></a>
       </div>
       <!-- <div>
          <ul>
@@ -47,7 +47,7 @@
             <td width="95%" align="right"> 카테고리 : 
             <form id="frm" action="list.do" method="post">
                <select name="kind">
-                  <option value="null">선택</option>
+                  <option>선택</option>
 					<option value="한식">한식</option>
 					<option value="양식">양식</option>
 					<option value="중식">중식</option>

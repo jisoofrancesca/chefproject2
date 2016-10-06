@@ -19,12 +19,13 @@ public class ListModel implements Model{
 		String kind=req.getParameter("kind");
 		System.out.println(kind);
 		String strPage=req.getParameter("page");
+		
 		if(strPage==null)
 			strPage="1";
 		
 		int curPage=Integer.parseInt(strPage);		
 		
-		if(kind==null){
+		if(kind==null || kind.equals("")){
 			list=dao.chefListData(curPage);
 			int totalPage=dao.boardTotal();
 			int count=dao.boardCount();
@@ -46,7 +47,7 @@ public class ListModel implements Model{
 			req.setAttribute("block", block);
 			req.setAttribute("fromPage", fromPage);
 			req.setAttribute("toPage", toPage);
-		}else{
+		}else{			
 			list=dao.boardSearch(curPage, kind);
 			int totalPage=dao.boardSearchTotal(kind);
 			int count=dao.boardSearchCount(kind);
