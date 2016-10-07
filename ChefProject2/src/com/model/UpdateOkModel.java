@@ -23,6 +23,8 @@ public class UpdateOkModel implements Model {
 		String kind = req.getParameter("kind");
 		String page = req.getParameter("page");
 		
+		content = content.replace("\r\n","<br>");
+		
 		BoardDTO dto = new BoardDTO();
 		dto.setNo(Integer.parseInt(no));
 		dto.setName(name);
