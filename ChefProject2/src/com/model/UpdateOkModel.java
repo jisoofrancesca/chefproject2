@@ -37,19 +37,6 @@ public class UpdateOkModel implements Model {
 		req.setAttribute("page", page);
 		
 		return "board/update_ok.jsp";
-		
-		//System.out.println(kind);
-
-		//BoardDAO dao = new BoardDAO();
-		//boolean bCheck = dao.chefUpdate(dto);
-
-		/*if (bCheck == true) {
-			listHome = "list.do";
-		} else {
-			
-		}
-
-		return listHome;*/
 	}
 
 }

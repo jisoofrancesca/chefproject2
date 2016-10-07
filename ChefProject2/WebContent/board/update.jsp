@@ -41,7 +41,7 @@
 					<input type="checkbox" name="kind" value="양식"/>양식
 					<input type="checkbox" name="kind" value="중식"/>중식
 					<input type="checkbox" name="kind" value="일식"/>일식
-					<input type="checkbox" name="kind" value="기타"/>기타
+					<input type="checkbox" name="kind" value="기타" checked="checked"/>기타
 				</td>
 			</tr>
 			<tr>

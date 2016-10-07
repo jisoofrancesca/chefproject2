@@ -17,6 +17,8 @@ public class InsertOkModel implements Model{
 		String content=req.getParameter("content");
 		String pwd=req.getParameter("pwd");
 		String kind = req.getParameter("kind");
+		if(kind==null)
+			kind="±‚≈∏";
 		
 		BoardDTO d=new BoardDTO();
 		d.setName(name);

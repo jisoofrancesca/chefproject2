@@ -17,7 +17,7 @@ public class ListModel implements Model{
 		List<BoardDTO> list=new ArrayList<>();
 		
 		String kind=req.getParameter("kind");
-		System.out.println(kind);
+		//System.out.println(kind);
 		String strPage=req.getParameter("page");
 		
 		if(strPage==null)
